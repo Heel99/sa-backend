@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Request to RM</title>
+    <style>
+      /* CSS styling */ body { font-family: Arial, sans-serif; font-size: 16px;
+      line-height: 1.5; color: #333333; } p { margin-top: 0; margin-bottom: 1em;
+      } img { height: 20px; width : 150px ; margin-bottom: 1rem;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <img
+        src="https://dbedf8rr5x9l0.cloudfront.net/mail-signature/logo+2.png"
+        alt="solution analysts"
+      />
+    </div>
+    <p>Hello, Greetings for the day</p>
+    <p>
+      This is
+      {empName}, and I am writing to request cancel the subscription for
+      <strong>{serviceName}</strong>
+      from
+      <strong>{serviceProvider}</strong>.
+    </p>
+    <p>Kindly find the further details of the course below:</p>
+    <ul>
+      <li><strong>Expiry Date : </strong>{expiryDate}</li>
+      <li><strong>Link</strong>
+        :
+        <a href={serviceLink}>Link for subscription platform</a></li>
+      <li><strong>Reason for cancel :</strong>{reason}</li>
+      <li><strong>Email Id :</strong>{purchaseEmail}</li>
+    </ul>
+    <p>
+      Please cancel the subscription on expiration date and close the service.
+    </p>
+    Best regards,
+    <br />
+    {empName1}
+  </body>
+</html>

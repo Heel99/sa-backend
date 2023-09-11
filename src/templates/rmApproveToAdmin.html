@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title> New purchase request</title>
+    <style>
+      /* CSS styling */ body { font-family: Arial, sans-serif; font-size: 16px;
+      line-height: 1.5; color: #333333; } p { margin-top: 0; margin-bottom: 1em;
+      }  img { height: 20px; width : 150px ; margin-bottom: 1rem;}
+    </style>
+  </head>
+  <body>
+    <div>
+      <img src="https://dbedf8rr5x9l0.cloudfront.net/mail-signature/logo+2.png" alt="solution analysts" />
+    </div>
+    <p>Hello Finance Team,</p>
+    <p>
+      I am writing to request the purchase of
+      <strong>{serviceName}</strong>
+      subscription. One of our team members
+      {empName}
+      is Requested in the
+      <strong>{serviceName1}</strong>
+      offered by
+      <strong>{serviceProvider}</strong>.
+    </p>
+    <p>Below are the necessary information to proceed with the purchase :</p>
+    <ul>
+      <li><strong>Subscription name :</strong> {serviceName2}</li>
+      <li><strong>Duration : </strong>{duration}</li>
+      <li><strong>Link</strong>
+        :
+        <a href={serviceLink}>service purchase page link</a></li>
+      <li><strong>Reason of Approval : </strong>{remark}</li>
+    </ul>
+    <p>Kindly go to the <a href={link}>Portal</a> for further actions</p>
+    <p>We look forward to hearing from you and appreciate your assistance in
+      making this purchase.
+    </p>
+    Best regards,
+    <br />
+    {rmName}
+  </body>
+</html>

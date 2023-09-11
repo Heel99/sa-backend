@@ -1,0 +1,30 @@
+definitions:
+   services:
+     docker:
+       memory: 2048
+options:
+  docker: true
+pipelines:
+      branches:  
+        feature/subscription-portal-BE:
+        - step:
+            name: AWS configure 
+            image: amazon/aws-cli
+            caches:
+              - node
+            script:
+              - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+              - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+              - export AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION
+              - aws ecr get-login-password --region ap-south-1 | docker login --username AWS --password-stdin 123558316562.dkr.ecr.ap-south-1.amazonaws.com
+              - docker build -t sa-subscription-nodejs .
+              - docker tag sa-subscription-nodejs:latest 123558316562.dkr.ecr.ap-south-1.amazonaws.com/sa-subscription-nodejs:latest
+              - docker push 123558316562.dkr.ecr.ap-south-1.amazonaws.com/sa-subscription-nodejs:latest
+              - docker rmi sa-subscription-nodejs:latest
+              - docker rmi 123558316562.dkr.ecr.ap-south-1.amazonaws.com/sa-subscription-nodejs:latest
+        - step:
+            name: Deploy to Elastic Beanstalk
+            image: amazon/aws-cli:latest
+            script:
+              - aws elasticbeanstalk create-application-version --application-name  SA-Subscription-Backend --version-label SA-Version$BITBUCKET_BUILD_NUMBER --source-bundle S3Bucket=elasticbeanstalk-ap-south-1-123558316562,S3Key=Dockerrun.aws.json
+              - aws elasticbeanstalk update-environment --application-name  SA-Subscription-Backend --environment-name "SA-SubscriptionBackend-Env" --version-label=SA-Version$BITBUCKET_BUILD_NUMBER 
