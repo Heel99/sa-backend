@@ -6,6 +6,8 @@ pipeline {
             steps { 
                  dir('sa-backend'){
                 sh 'git pull'
+                sh 'git checkout master'  
+                sh 'git pull origin master' 
                 sh 'npm cache clean --force'
                 sh 'npm install'
                 sh 'npm run build'
