@@ -5,9 +5,7 @@ pipeline {
         stage('Build and Package') {
             steps { 
                  dir('sa-backend'){
-                sh 'cd sa-backend/'
                 sh 'git pull'
-                
                 sh 'npm cache clean --force'
                 sh 'npm install'
                 sh 'npm run build'
