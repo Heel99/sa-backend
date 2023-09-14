@@ -6,7 +6,7 @@ pipeline {
             steps {
                 sh 'npm install'
                 sh 'npm run build'
-                sh "pm2 start npm --name "testing" -- start"
+                sh 'pm2 start npm --name "testing" -- start'
             }
         
         }
